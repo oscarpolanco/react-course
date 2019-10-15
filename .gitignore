@@ -1,2 +1,4 @@
 ## vs code
 *.code-workspace
+
+.DS_Store
