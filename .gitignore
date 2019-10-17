@@ -1,4 +1,11 @@
 ## vs code
 *.code-workspace
+.vscode/
 
+## project
 .DS_Store
+node_modules
+.cache/
+dist/
+coverage/
+.env
