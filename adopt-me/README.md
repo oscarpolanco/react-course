@@ -32,3 +32,32 @@ On this section we introduce some of the tools that will help us on our project 
 - format on save (check)
 - Require config
 - Prettier:Require config(check)
+
+# Section 3: JSX
+
+On this section we use jsx on our components and configure `eslint` to recognize jsx.
+
+- [Convert my components to jsx](https://github.com/oscarpolanco/react-course/pull/3/commits/058d47518635665452cbca3fbad3e64550a8a27d)
+- [Configure eslint for react](https://github.com/oscarpolanco/react-course/pull/3/commits/92988fc32ac59cf84db18fdbcab892b91783b563) -[Use jsx on App.js and use js expression](https://github.com/oscarpolanco/react-course/pull/3/commits/af85b7c263c8bf96c57156a89f5a994eeb5aa93e)
+
+## Eslint configuration for react
+
+- Install the following packages:
+  - `babel-eslint`: Permit that eslint will argument by babel
+  - `eslint-plugin-import`: Add new rules for import/export
+  - `eslint-plugin-jsx-a11y`: Some rules for accessibility
+  - `eslint-plugin-react`: Additional react rules
+- Go to `eslintrc.json`
+- On the `extends` (new Rules) array add the following (If you have `prettier` is better that is last)
+  - plugin:import/errors
+  - plugin:react/recommended
+  - plugin:jsx-a11y/recommended
+- Go to `plugins` (new abilities) array and add:
+  - react
+  - import
+  - jsx-a11y
+- Add `rules` and add (Just activating/deactivating some rules)
+  - "react/prop-types": 0
+  - "no-console': 1
+- Add settings and add the following on the object
+  - react => version: "detect"
