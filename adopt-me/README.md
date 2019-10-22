@@ -38,7 +38,8 @@ On this section we introduce some of the tools that will help us on our project 
 On this section we use jsx on our components and configure `eslint` to recognize jsx.
 
 - [Convert my components to jsx](https://github.com/oscarpolanco/react-course/pull/3/commits/058d47518635665452cbca3fbad3e64550a8a27d)
-- [Configure eslint for react](https://github.com/oscarpolanco/react-course/pull/3/commits/92988fc32ac59cf84db18fdbcab892b91783b563) -[Use jsx on App.js and use js expression](https://github.com/oscarpolanco/react-course/pull/3/commits/af85b7c263c8bf96c57156a89f5a994eeb5aa93e)
+- [Configure eslint for react](https://github.com/oscarpolanco/react-course/pull/3/commits/92988fc32ac59cf84db18fdbcab892b91783b563)
+- [Use jsx on App.js and use js expression](https://github.com/oscarpolanco/react-course/pull/3/commits/af85b7c263c8bf96c57156a89f5a994eeb5aa93e)
 
 ## Eslint configuration for react
 
@@ -61,3 +62,13 @@ On this section we use jsx on our components and configure `eslint` to recognize
   - "no-console': 1
 - Add settings and add the following on the object
   - react => version: "detect"
+
+# Section 4: Hooks
+
+On this section we use hooks to manage the states like you can see on the following topics:
+
+- [Add the searchParams component](https://github.com/oscarpolanco/react-course/pull/4/commits/7467ad08dfe8859ed0360dea5a3dfc9eb681b3e0)
+- [Set a state using hooks](https://github.com/oscarpolanco/react-course/pull/4/commits/1c9c1b55627bc268e1dbf2843c27010ee8c4ca20)
+- [Configure eslint for hooks](https://github.com/oscarpolanco/react-course/pull/4/commits/97ca602a93ba4a338c3bb330b6e44f3d56f58453)
+- [Add the animals api and create a select using hooks for it state](https://github.com/oscarpolanco/react-course/pull/4/commits/b144c82b3365efe4aa2315e508a9ba314d48521b)
+- [Create a breed dropdown](https://github.com/oscarpolanco/react-course/pull/4/commits/b7c4bd1713fb0b7028ac5d676287322dc53fdd96) -[Add a custom hooks and reusable dropdown](https://github.com/oscarpolanco/react-course/pull/4/commits/92fd38bc7bcb1a0fb78b9c5a3e321f0c1fdd4767)
