@@ -8,7 +8,7 @@ On this section we use a simple react component to make an example of a pure rea
 - [Passing props to a component](https://github.com/oscarpolanco/react-course/pull/1/commits/4f6b9728262e2a25a2d9fbe1614e707dd357a3d7)
 - [Destructuring](https://github.com/oscarpolanco/react-course/pull/1/commits/1479e1f252171d845b79f0512e88e7a40344a372)
 
-To run the example:
+## To run the example:
 
 1. Go to the [src](https://github.com/oscarpolanco/react-course/tree/project_setup/adopt-me/scr) directory
 2. Open the index.html file in your favorite browser
@@ -32,6 +32,12 @@ On this section we introduce some of the tools that will help us on our project 
 - format on save (check)
 - Require config
 - Prettier:Require config(check)
+
+## To run the example
+
+- npm `install`
+- npm run dev
+- Go to [localhost:1234](http://localhost:1234/)
 
 # Section 3: JSX
 
@@ -71,4 +77,18 @@ On this section we use hooks to manage the states like you can see on the follow
 - [Set a state using hooks](https://github.com/oscarpolanco/react-course/pull/4/commits/1c9c1b55627bc268e1dbf2843c27010ee8c4ca20)
 - [Configure eslint for hooks](https://github.com/oscarpolanco/react-course/pull/4/commits/97ca602a93ba4a338c3bb330b6e44f3d56f58453)
 - [Add the animals api and create a select using hooks for it state](https://github.com/oscarpolanco/react-course/pull/4/commits/b144c82b3365efe4aa2315e508a9ba314d48521b)
-- [Create a breed dropdown](https://github.com/oscarpolanco/react-course/pull/4/commits/b7c4bd1713fb0b7028ac5d676287322dc53fdd96) -[Add a custom hooks and reusable dropdown](https://github.com/oscarpolanco/react-course/pull/4/commits/92fd38bc7bcb1a0fb78b9c5a3e321f0c1fdd4767)
+- [Create a breed dropdown](https://github.com/oscarpolanco/react-course/pull/4/commits/b7c4bd1713fb0b7028ac5d676287322dc53fdd96)
+- [Add a custom hooks and reusable dropdown](https://github.com/oscarpolanco/react-course/pull/4/commits/92fd38bc7bcb1a0fb78b9c5a3e321f0c1fdd4767)
+
+# Section 5: useEffect
+
+On this section we will implement the useEffect hook to update the data of the dropdowns on the example project.
+
+- [Add useEffect to update the dropdown](https://github.com/oscarpolanco/react-course/pull/5/commits/2210e95ba485dd235827087d34d5e072e06d5104)
+- [Update breeds name on the useEffect function](https://github.com/oscarpolanco/react-course/pull/5/commits/b6c35d3d674dae64dc348063cc09f4884623006c)
+
+## Notes:
+
+- `useEffect` substitute some of the lifecycle methods of react. Think on that you have `componentDidMount`, `componentDidUpdate` and `componentWillUnmount` combined.
+- If you don't send the array of dependencies it will run every time the components re-render.
+- If you put an empty array of dependencies will run once.
