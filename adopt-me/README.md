@@ -92,3 +92,14 @@ On this section we will implement the useEffect hook to update the data of the d
 - `useEffect` substitute some of the lifecycle methods of react. Think on that you have `componentDidMount`, `componentDidUpdate` and `componentWillUnmount` combined.
 - If you don't send the array of dependencies it will run every time the components re-render.
 - If you put an empty array of dependencies will run once.
+
+# Section 6: DevTools
+
+On this section we have a brief resume of the dev tools that will help use when we use react.
+
+- [Add React.strict mode](https://github.com/oscarpolanco/react-course/pull/5/commits/b6c35d3d674dae64dc348063cc09f4884623006c)
+
+## Notes:
+
+- When you compile you code you will need a `NODE_ENV`; `parcer`, `webpack`, etc will help you with this. You need this to have more explicit error and tools that will help you on development mode and in production mode this tools will we cut to have a smaller size of the code.
+- Strict mode will help you to check if your are using legacy code that is deprecated.
