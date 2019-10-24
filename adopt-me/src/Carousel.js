@@ -6,8 +6,8 @@ class Carousel extends React.Component {
     active: 0
   };
 
-  static getDrivedStateFromProps({ media }) {
-    let photos = ["http://placeholder.com/600/600"];
+  static getDerivedStateFromProps({ media }) {
+    let photos = ["http://placecorgi.com/600/600"];
 
     if (media.length) {
       photos = media.map(({ large }) => large);
@@ -36,6 +36,7 @@ class Carousel extends React.Component {
               data-index={index}
               src={photo}
               className={index === active ? "active" : ""}
+              alt="animal thumbnail"
             />
           ))}
         </div>
