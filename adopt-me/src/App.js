@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import SearchParams from "./SearchParams";
+import "regenerator-runtime/runtime";
 
 // your code is going to be here
 const App = () => {
