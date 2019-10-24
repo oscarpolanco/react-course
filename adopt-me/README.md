@@ -103,3 +103,19 @@ On this section we have a brief resume of the dev tools that will help use when 
 
 - When you compile you code you will need a `NODE_ENV`; `parcer`, `webpack`, etc will help you with this. You need this to have more explicit error and tools that will help you on development mode and in production mode this tools will we cut to have a smaller size of the code.
 - Strict mode will help you to check if your are using legacy code that is deprecated.
+
+# Section 7 Async and routing:
+
+On this section we begin to use async calls to the api and use the data that we get back from it also did a little routing example.
+
+- [Add a async function to the form and list of browser that babel will handle](https://github.com/oscarpolanco/react-course/pull/7/commits/ead16c88bc718724c3cb93172d8d81995763cbc2)
+- [Add a mock api for the example](https://github.com/oscarpolanco/react-course/pull/7/commits/3b1d926a82979de55142a7e4fd0606dda5d9123e)
+- [Add a Result component to render the data of the api](https://github.com/oscarpolanco/react-course/pull/7/commits/f7087a47f7ee666c887cfb68444d4946b72253e0)
+- [Refactor the pet component](https://github.com/oscarpolanco/react-course/pull/7/commits/d4cd75c96b08fa1e5d015700c3676db2e21ad8c0)
+- [Add reach router](https://github.com/oscarpolanco/react-course/pull/7/commits/f5a1ee16f98da032f31ab8173b9d699e24894c9c)
+- [Print the react router info object on the details page and use link](https://github.com/oscarpolanco/react-course/pull/7/commits/df484caf95f2315b4fb25dd47b97a1406e1bb6ad)
+
+## Note:
+
+- We import `regenerator-runtime/runtime` on `App.js` because we have a `parcer` error.
+- `cross-env` allows you to have consistency between the operating system of your environment variables.
