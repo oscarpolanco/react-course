@@ -5,7 +5,7 @@ import { Link } from "@reach/router";
 
 class ErrorBoundary extends Component {
   state = { hasError: false };
-  static getDrivedStateFromError() {
+  static getDerivedStateFromProps() {
     return { hasError: true };
   }
 
