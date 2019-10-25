@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import { Router, Link } from "@reach/router";
 import SearchParams from "./SearchParams";
-// import "regenerator-runtime/runtime";
+import "regenerator-runtime/runtime";
 import Details from "./Details";
 
 // your code is going to be here
