@@ -119,3 +119,43 @@ On this section we begin to use async calls to the api and use the data that we 
 
 - We import `regenerator-runtime/runtime` on `App.js` because we have a `parcer` error.
 - `cross-env` allows you to have consistency between the operating system of your environment variables.
+
+## Section 8: Class component
+
+On this section we will do a class component to learn insides about it.
+
+- [Update Details component to a class component](https://github.com/oscarpolanco/react-course/pull/8/commits/3a2f1581285ccf0d07ecc71e06de67ba62c32f54)
+- [Complete the render function](https://github.com/oscarpolanco/react-course/pull/8/commits/e9f49bc74db92bdbb5c4feebf454d682c7194840)
+- [Configuring babel to parcel](https://github.com/oscarpolanco/react-course/pull/8/commits/e30a90eab9a317c05aa2f1936f5941ebf3c6cd83)
+- [Add a carousel component](https://github.com/oscarpolanco/react-course/pull/8/commits/6103ef3c39020506418bd50ebfc06470c25e4778)
+- [Add the handleClick function on the correct context](https://github.com/oscarpolanco/react-course/pull/8/commits/8df43e6a81ac78209d9425adc840a780fb9dc0c4)
+- [Implement the carousel component on the detail page and fix issues](https://github.com/oscarpolanco/react-course/pull/8/commits/c27915e96cc21e1ace33a10dee8c73b746669e6e)
+
+## Notes:
+
+- Parcel doesn't recognize the experimental syntax (modern js) like `state ={}`
+- Configure babel for parcel:
+
+  - npm install:
+    - babel-eslint
+    - @babel/core
+    - @babel/preset-env
+    - @babel/plugin-proposal-class-properties
+    - @babel/preset-react
+  - Create a file `.babelrc` on the root of the project
+  - Add the following config:
+    ```
+    {
+        "presets": ["@babel/preset-react", "@babel/preset-env"],
+        "plugins": ["@babel/plugin-proposal-class-properties"]
+    }
+    ```
+    - `preset`: A group of plugin
+    - `preset-react`: Bring all the things to transpile react
+    - `preset-env`: transpile the code on the environment that you specify. On this case, we use the `browserlist` that is on the `package.json`
+    - `plugin-proposal-class-properties`: Transpile the modern js
+
+- Go to `.eslintrc` and add:
+  `"parser": "babel-eslint"`
+  - This means that use babel to understand the code
+- `getDrivedStateFromProps`: Special `react` function that receive a set of `props` and return a set `states`
