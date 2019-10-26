@@ -120,7 +120,7 @@ On this section we begin to use async calls to the api and use the data that we 
 - We import `regenerator-runtime/runtime` on `App.js` because we have a `parcer` error.
 - `cross-env` allows you to have consistency between the operating system of your environment variables.
 
-## Section 8: Class component
+# Section 8: Class component
 
 On this section we will do a class component to learn insides about it.
 
@@ -159,3 +159,17 @@ On this section we will do a class component to learn insides about it.
   `"parser": "babel-eslint"`
   - This means that use babel to understand the code
 - `getDrivedStateFromProps`: Special `react` function that receive a set of `props` and return a set `states`
+
+# Section 9: Error Boundaries
+
+On this sections we handle the errors on the components adding error boundaries
+
+- [Add a ErrorBoundry component](https://github.com/oscarpolanco/react-course/pull/9/commits/08a3e363fdb7c9e5e724b845a27ef07fde88535f)
+- [Use the error boundary, throw an example error and fix a bug](https://github.com/oscarpolanco/react-course/pull/9/commits/2ed58efbeb6ba48b6421e2cafdf9af472c809d09)
+- [Add a redirect when there is an error and update the ErrorBoundry component name](https://github.com/oscarpolanco/react-course/pull/9/commits/3daa1a8aa1ff6665498ea3653a189f9e0d3b4d2e)
+
+## Notes:
+
+- `componentDidCatch`: A especial react method that works as a catch for errors.
+- `getDrivedStateFromError`: Get call when a error is throw by a descendant component.
+- We use `componentDidUpdate` to do a example using various cycle methods instead only using one.
