@@ -189,3 +189,15 @@ On this section we explore the context using hooks and classes to use it.
 - The second parameter on the `createContext` is just a placeholder in the case the provider don't send a function. We send a hook for this example.
 - We don't use our custom dropdown because it use its own hooks and we are using someone else hooks.
 - Update the link on the `Pet.js` file because when it redirect to the page it destroy the `DOM` because is changing the page with the link and we will have the default state of the context instead of the update that we did; now we use `Link` that see the `html history`.
+
+# Section 11: Portals
+
+On this section we create a modal in order to use `Portals`.
+
+- [Add a modal component and use Portal](https://github.com/oscarpolanco/react-course/pull/11/commits/cac2ef42cdf573a555352080dd80bce538bc3baa)
+- [Implement the modal component on details](https://github.com/oscarpolanco/react-course/pull/11/commits/e990fa58fc7a0324d6284706ad163c48d46bf58f)
+
+## Notes:
+
+- We use `useRef` to point to the same element when we create the element and destroyed.
+- When you return a function on the `useEffect` works like `componentWillUnmount`.
