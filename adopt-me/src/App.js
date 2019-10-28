@@ -8,7 +8,7 @@ import ThemeContext from "./ThemeContext";
 
 // your code is going to be here
 const App = () => {
-  const themeKook = useState("darkblue");
+  const themeKook = useState("peru");
   return (
     <React.StrictMode>
       <ThemeContext.Provider value={themeKook}>
