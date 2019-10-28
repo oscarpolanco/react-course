@@ -173,3 +173,19 @@ On this sections we handle the errors on the components adding error boundaries
 - `componentDidCatch`: A especial react method that works as a catch for errors.
 - `getDrivedStateFromError`: Get call when a error is throw by a descendant component.
 - We use `componentDidUpdate` to do a example using various cycle methods instead only using one.
+
+# Section 10: Context
+
+On this section we explore the context using hooks and classes to use it.
+
+- [Add and use a context](https://github.com/oscarpolanco/react-course/pull/10/commits/57b42f3b847a86e7871f0274ce67434aa4561ae4)
+- [Use context with classes](https://github.com/oscarpolanco/react-course/pull/10/commits/c8566e40ff2772c939b4f8bb0c659cdffe768eb1)
+- [Update the context from a component](https://github.com/oscarpolanco/react-course/pull/10/commits/d6efeeb551c22c96fe7166109cf776b30c468e89)
+
+## Notes:
+
+- We can use it when we got a global app state like a user authenticate.
+- Break the flow of the data of `React`. You don't necessary send the state to a child and this will not be explicit.
+- The second parameter on the `createContext` is just a placeholder in the case the provider don't send a function. We send a hook for this example.
+- We don't use our custom dropdown because it use its own hooks and we are using someone else hooks.
+- Update the link on the `Pet.js` file because when it redirect to the page it destroy the `DOM` because is changing the page with the link and we will have the default state of the context instead of the update that we did; now we use `Link` that see the `html history`.
