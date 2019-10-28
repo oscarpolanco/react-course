@@ -15,7 +15,6 @@ class ErrorBoundary extends Component {
 
   componentDidUpdate() {
     if (this.state.hasError) {
-      console.log("hey");
       setTimeout(() => this.setState({ redirect: true }), 5000);
     }
   }
