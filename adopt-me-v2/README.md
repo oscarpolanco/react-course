@@ -76,3 +76,5 @@ const ExpensiveComputationComponent = memo(({ compute, count }) => {
   A resume of [Hooks](https://btholt.github.io/complete-intro-to-react-v5/hooks-in-depth)
 
 Here some [Hooks examples](https://codesandbox.io/s/github/btholt/react-hooks-examples/tree/master/)
+
+# Section 3: CSS in JS
