@@ -76,3 +76,25 @@ const ExpensiveComputationComponent = memo(({ compute, count }) => {
   A resume of [Hooks](https://btholt.github.io/complete-intro-to-react-v5/hooks-in-depth)
 
 Here some [Hooks examples](https://codesandbox.io/s/github/btholt/react-hooks-examples/tree/master/)
+
+# Section 3: CSS in JS
+
+On this section we will examine how to work with css on JS.
+
+- [Add Emotion and a NavBar component](https://github.com/oscarpolanco/react-course/pull/15/commits/4a73a7d892f4a6445bf6da9ece116c606741fa1b)
+- [Template literals and hooks](https://github.com/oscarpolanco/react-course/pull/15/commits/86c5ea58cf1731983c6cc01f9551720cec13c39a)
+- [Desing system and compound selectors](https://github.com/oscarpolanco/react-course/pull/15/commits/d34709a56e44282b9d54e76c465cfc7bd562bc8c)
+- [Animation](https://github.com/oscarpolanco/react-course/pull/15/commits/5de1d634ba89895aa9438d7088bfe48a5add0dc3)
+
+To get auto complition when you are using `vs-code` just need to install `vscode-styled-components`.
+
+After install `emotion` need to update your `.babelrc`:
+
+```js
+[
+  "@emotion/babel-preset-css-prop",
+  {
+    sourceMap: false
+  }
+];
+```
