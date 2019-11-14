@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { render } from "react-dom";
 import { Router, Link } from "@reach/router";
 import SearchParams from "./SearchParams";
-import Details from "./Details";
 import ThemeContext from "./ThemeContext";
-import NavBar from "./NavBar";
 import "regenerator-runtime/runtime";
+
+const Details = lazy(() => import("./Details"));
 
 // your code is going to be here
 const App = () => {
@@ -14,11 +14,15 @@ const App = () => {
     <React.StrictMode>
       <ThemeContext.Provider value={themeKook}>
         <div>
-          <NavBar />
-          <Router>
-            <SearchParams path="/" />
-            <Details path="/details/:id" />
-          </Router>
+          <header>
+            <Link to="/">Adopt Me!</Link>
+          </header>
+          <Suspense fallback={<h1>loading route...</h1>}>
+            <Router>
+              <SearchParams path="/" />
+              <Details path="/details/:id" />
+            </Router>
+          </Suspense>
         </div>
       </ThemeContext.Provider>
     </React.StrictMode>
