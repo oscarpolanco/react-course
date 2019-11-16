@@ -32,7 +32,7 @@ function SomeFunction() {
 
 - `useRef`: Allow you to have the same clouser that you specify. It will return an object that has the `.current` property that is initialized to the passed argument. The returned object will persist for the full lifetime of the component. Part of the description on the [React docs](https://reactjs.org/docs/hooks-reference.html#useref)
   `const refContainer = useRef(initialValue);`
-- `useReducer`: Allow you to update the state depending on an action. It will accept a reducer function and returns the state and a dispatch method.
+- `useReducer`: Allow you to update the state depending on the action. It will accept a reducer function and returns the state and a dispatch method.
   `const [state, dispatch] = useReducer(reducer, initialArg, init);`
 
 Example of a `reducer`:
@@ -79,16 +79,16 @@ Here some [Hooks examples](https://codesandbox.io/s/github/btholt/react-hooks-ex
 
 # Section 3: CSS in JS
 
-On this section we will examine how to work with css on JS.
+In this section we will examine how to work with css on JS.
 
 - [Add Emotion and a NavBar component](https://github.com/oscarpolanco/react-course/pull/15/commits/4a73a7d892f4a6445bf6da9ece116c606741fa1b)
 - [Template literals and hooks](https://github.com/oscarpolanco/react-course/pull/15/commits/86c5ea58cf1731983c6cc01f9551720cec13c39a)
 - [Desing system and compound selectors](https://github.com/oscarpolanco/react-course/pull/15/commits/d34709a56e44282b9d54e76c465cfc7bd562bc8c)
 - [Animation](https://github.com/oscarpolanco/react-course/pull/15/commits/5de1d634ba89895aa9438d7088bfe48a5add0dc3)
 
-To get auto complition when you are using `vs-code` just need to install `vscode-styled-components`.
+To get auto-completion when you are using `vs-code` just need to install `vscode-styled-components`.
 
-After install `emotion` need to update your `.babelrc`:
+After installing `emotion` need to update your `.babelrc`:
 
 ```js
 [
@@ -101,11 +101,76 @@ After install `emotion` need to update your `.babelrc`:
 
 # Section 4: Code splitting:
 
-On this section we will check how to separate the bundle and load it when is necessary.
+In this section we will check how to separate the bundle and load it when it is necessary.
 
 - [Remove the NavBar component and code split the details route](https://github.com/oscarpolanco/react-course/pull/16/commits/883464673afa4cef01f9629450d270103b66b535)
-- [Code spliting libraries and child components](https://github.com/oscarpolanco/react-course/pull/16/commits/7bceb86c8976ceac2b886d3cf1a16fc14eb94f95)
+- [Code splitting libraries and child components](https://github.com/oscarpolanco/react-course/pull/16/commits/7bceb86c8976ceac2b886d3cf1a16fc14eb94f95)
 
-Using `lazy` the `import` will be suspense the first time when it need will be upload so this functionality can be use once.
+Using `lazy` the `import` will be suspense the first time when it needs will be upload so this functionality can be used once.
 
-The `suspense` component can be use on the top level or in the element itself that you wanna be `lazy` in other words all the child can be affected for a top level `suspense`.
+The `suspense` component can be used on the top level or in the element itself that you wanna be `lazy` in other words all the child can be affected for a top-level `suspense`.
+
+# Section 5: Server-Side Rendering
+
+In this section we will covert the steps to do a `server-side render` of your app.
+
+- [Add initial setup for sever side render](https://github.com/oscarpolanco/react-course/pull/17/commits/b29e542e7d3e2212ae44001b5c41005cfe2e1188)
+
+- [Server side rendering to string](https://github.com/oscarpolanco/react-course/pull/17/commits/1afd9b7f4d5c58186f6570c30c8c93e02bb7777f)
+
+- [Server side rendering to Node Stream](https://github.com/oscarpolanco/react-course/pull/17/commits/44fa5c299447efcad23bb882b5c0b1bf300cd96c)
+
+Our initial example renders some `HTML` without any content then after our `js` file load it will re-render the page will all content so we add `server-side rendering` to load our app from the server then `React` can take over after loading.
+
+The `ClientApp.js` is our new file that will run the things that run on the browser.
+
+We use `hydrate` instead of `render` to take the markup that is already there and render. If we use render will destroy what is already there and re-render.
+
+We need to remove all reference to the frontend from our code that runs on the server like `document` or `window`.
+
+## Install:
+
+- `babel-cli`: Node doesn't spake `jsx` so we need to transpile our `react` code.
+- `express`: One of node frameworks.
+
+## Update package.json scripts:
+
+- `"build": "parcel build --public-url ./dist/ src/index.html"`: Build your code to the `dist` directory from the `src` index and be aware that we will serve the `dist` content.
+- `"start": "npm run build && babel-node server/index.js"`: This will build your code. `babel-node` isn't recommended for production typically you pre-compile your `React` code so Node can read so we don't have any `JSX`.
+
+## Server:
+
+- `fs.readFileSync("dist/index.html").toString()`: This will read the output `html` so we can use it on our server.
+- `html.split("not rendered")`: Split the html in this case on 2 parts on the `not rendered` section.
+- `app.use("/dist", express.static("dist"))`: This will be serve everything server on the `dist` directory.
+- Middleware on each request: `app.use((req, res) => {})`
+
+### Render to string
+
+- `res.send(parts[0] + renderToString(reactMarkup) + parts[1])`: Concat the 2 parts of the string.
+
+### Render to node string
+
+- Instead of having a big payload you send start to render pieces; you render piece by piece.
+- `res.write(parts[0])`: Send the first file to render.
+- `const stream = renderToNodeStream(reactMarkup)`: Create a `NodeStream` that will progressively render your app.
+- `Pipe` all markup on the `response` but not end when you are done with it:
+
+```js
+stream.pipe(
+  res,
+  { end: false }
+);
+```
+
+- When it end the first part; render the other and close the connection:
+
+```js
+stream.on("end", () => {
+  res.write(parts[1]);
+  res.end();
+});
+```
+
+- Run the server with the command: `npm run start`
+- Go to [localhost:3000](http://localhost:3000/)
