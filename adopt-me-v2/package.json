@@ -32,6 +32,7 @@
     "prettier": "^1.18.2"
   },
   "dependencies": {
+    "@babel/node": "^7.7.0",
     "@emotion/babel-preset-css-prop": "^10.0.23",
     "@emotion/core": "^10.0.22",
     "@frontendmasters/pet": "^1.0.3",

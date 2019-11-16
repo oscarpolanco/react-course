@@ -1,11 +1,9 @@
-import React, { useState, lazy, Suspense } from "react";
-import { render } from "react-dom";
+import React, { useState } from "react";
 import { Router, Link } from "@reach/router";
 import ThemeContext from "./ThemeContext";
+import SearchParams from "./SearchParams";
+import Details from "./Details";
 import "regenerator-runtime/runtime";
-
-const Details = lazy(() => import("./Details"));
-const SearchParams = lazy(() => import("./SearchParams"));
 
 // your code is going to be here
 const App = () => {
@@ -17,12 +15,10 @@ const App = () => {
           <header>
             <Link to="/">Adopt Me!</Link>
           </header>
-          <Suspense fallback={<h1>loading route...</h1>}>
-            <Router>
-              <SearchParams path="/" />
-              <Details path="/details/:id" />
-            </Router>
-          </Suspense>
+          <Router>
+            <SearchParams path="/" />
+            <Details path="/details/:id" />
+          </Router>
         </div>
       </ThemeContext.Provider>
     </React.StrictMode>
