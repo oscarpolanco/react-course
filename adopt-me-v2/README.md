@@ -98,3 +98,14 @@ After install `emotion` need to update your `.babelrc`:
   }
 ];
 ```
+
+# Section 4: Code splitting:
+
+On this section we will check how to separate the bundle and load it when is necessary.
+
+- [Remove the NavBar component and code split the details route](https://github.com/oscarpolanco/react-course/pull/16/commits/883464673afa4cef01f9629450d270103b66b535)
+- [Code spliting libraries and child components](https://github.com/oscarpolanco/react-course/pull/16/commits/7bceb86c8976ceac2b886d3cf1a16fc14eb94f95)
+
+Using `lazy` the `import` will be suspense the first time when it need will be upload so this functionality can be use once.
+
+The `suspense` component can be use on the top level or in the element itself that you wanna be `lazy` in other words all the child can be affected for a top level `suspense`.
