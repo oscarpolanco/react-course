@@ -1,11 +1,11 @@
 import React, { useState, lazy, Suspense } from "react";
 import { render } from "react-dom";
 import { Router, Link } from "@reach/router";
-import SearchParams from "./SearchParams";
 import ThemeContext from "./ThemeContext";
 import "regenerator-runtime/runtime";
 
 const Details = lazy(() => import("./Details"));
+const SearchParams = lazy(() => import("./SearchParams"));
 
 // your code is going to be here
 const App = () => {
