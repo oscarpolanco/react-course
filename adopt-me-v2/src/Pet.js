@@ -1,24 +1,7 @@
-import React, { FunctionComponent } from "react";
-import { Photo } from "@frontendmasters/pet";
+import React from "react";
 import { Link } from "@reach/router";
 
-interface IProps {
-  name: string;
-  animal: string;
-  breed: string;
-  media: Photo[];
-  location: string;
-  id: number;
-}
-
-const Pet: FunctionComponent<IProps> = ({
-  name,
-  animal,
-  breed,
-  media,
-  location,
-  id
-}) => {
+export default function Pet({ name, animal, breed, media, location, id }) {
   let hero = "http://placecorgi.com/300/300";
   if (media.length) {
     hero = media[0].small;
@@ -35,6 +18,4 @@ const Pet: FunctionComponent<IProps> = ({
       </div>
     </Link>
   );
-};
-
-export default Pet;
+}
