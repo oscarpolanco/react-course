@@ -174,3 +174,72 @@ stream.on("end", () => {
 
 - Run the server with the command: `npm run start`
 - Go to [localhost:3000](http://localhost:3000/)
+
+# Section 6: TypeScript with React
+
+In this section, we will migrate our app to a `typescript` application.
+
+- [Add TypeScript confiiguration for React](https://github.com/oscarpolanco/react-course/pull/18/commits/255d8ae04657d82eb1ea08ee28112ac63741fdd2)
+- [Typing the Modal component](https://github.com/oscarpolanco/react-course/pull/18/commits/f63318c9db835ac9def0f385c35ec231c8dd067c)
+- [Migrating to tslint](https://github.com/oscarpolanco/react-course/pull/18/commits/dbf0246f24ee07fef0081006f2a80a1283c5547f)
+- [Typing the context component](https://github.com/oscarpolanco/react-course/pull/18/commits/eb2e713eb51dbb99899b92dc99913bb64292bc4c)
+- [Typing a Class component](https://github.com/oscarpolanco/react-course/pull/18/commits/157f4d61b3b4c6476d10a864d2695fb3319501f0)
+- [Typing ErrorBoundry and fix tslint issue](https://github.com/oscarpolanco/react-course/pull/18/commits/0da021b30d0269b7825b9d6224846ff102395d3d)
+- [Use props and state interfaces](https://github.com/oscarpolanco/react-course/pull/18/commits/909eac79e55b90eec5b565982fe38b98ebdc1c55)
+- [Heterogeneous Arrays and Hooks](https://github.com/oscarpolanco/react-course/pull/18/commits/7a632345af3c21afd260e634346dc5b495bab396)
+- [Typing App.js and add typecheck script](https://github.com/oscarpolanco/react-course/pull/18/commits/5bb10c31e22a8cf2b5e3dd51af9f045a238772f2)
+
+## Initiate your typescript project
+
+To begin the migration process you need to install `typeScript` using `npm install typescript` then run the binaries of `typescript` using `npx tsc --init`(`tsc` is the `typescript` compiler).
+
+After the installetion a `tsconfig.json` file will be create and you need to update the following parts:
+
+- `target` => from `ES2019` to `ES2018`
+- uncomment `jsx` and put `react`. `"jsx": "react"`
+
+### Note:
+
+- You can put `strict` mode to `false` but you don't get all benefice of `typescript`; you can use it to begin the project but your main objective will be to habilitate `strict` mode to `true`.
+
+- `React` is not write on `typescript` but there are teams that build libraries with `types` that can be used on our project. `Definitely type` write those `type` for this kind of library.
+
+## Add types
+
+After initiate, your project installs the following packages that will add `types` to our current stack of libraries.
+`npm install -D @types/react @types/react-dom @types/reach__router`
+
+By default `typescript` will not check the file with the `js` extension. This will help us to migrate piece by piece. To begin the migration just update the extension from `js` to `tsx`.
+
+## Migrate from eslint to tslint
+
+We need to migrate to `tslint` because `eslint` is not ready to handle `typescript` but the plan is to manage all users with `eslint`.
+
+Unistall the following packages:
+`npm uninstall eslint babel-eslint eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks`
+
+Now install the following `tslint` packages:
+`npm install -D tslint tslint-react tslint-config-prettier`
+
+Then delete your `eslintrc.json` then go to `package.json` and update the `lint` config
+`"lint": "tslint --project"`
+
+Create a new file call `tslint.json` and add the following configuration.
+
+```js
+{
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "rules": {
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "member-ordering": false,
+    "no-console": false,
+    "jsx-no-lambda": false
+  }
+}
+```
+
+### Note
+
+- `--project` means that the command will use the `tsconfig` of the project.
+- For `vscode` you can add the `TSLint` extension to see your errors directly on the editor.
