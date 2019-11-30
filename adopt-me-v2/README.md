@@ -243,3 +243,162 @@ Create a new file call `tslint.json` and add the following configuration.
 
 - `--project` means that the command will use the `tsconfig` of the project.
 - For `vscode` you can add the `TSLint` extension to see your errors directly on the editor.
+
+# Section 7: Redux
+
+In this section we gonna implement `redux` instead of the `context` API from `react`.
+
+- [Rollback typescript](https://github.com/oscarpolanco/react-course/pull/19/commits/076faee0f158ce43a823c86a07d72d08f5a18958)
+- [Add redux and create the store file](https://github.com/oscarpolanco/react-course/pull/19/commits/ae5c1006ca573718761d7b2c0c465e418fc0f2ae)
+- [Create reducers](https://github.com/oscarpolanco/react-course/pull/19/commits/7db932bf225adfd02b64731d8ab10a51b50e9cf2)
+- [Create actions](https://github.com/oscarpolanco/react-course/pull/19/commits/337f9ac04ec474b72294569ef567173428982c9c)
+- [Connect Redux with the app, fix a babel error and redux extension error](https://github.com/oscarpolanco/react-course/pull/19/commits/67e6bf7808871b2ad5bdb78b41ea7cab09a17618)
+- [Fix some errors on the theme reducer and the SearchParams component](https://github.com/oscarpolanco/react-course/pull/19/commits/a959863d49681380003e003466d207688a2a884f)
+
+## Why we still use redux?
+
+If you have a lot of async request to different API that need to be on a specific order but we need `Sagas` to help `redux` also every step of the `state` will be testable so it can guarantee that you can see what happened to the `state` every step of the way.
+
+## Cycle of the state on redux
+
+React state management is pretty simple: call setState and let React re-render. That's it! Now there are a few steps involved.
+
+1. User types in input box
+2. Call action creator to get an action
+3. Dispatch action to Redux
+4. Redux inserts the action into the root reducer
+5. The root reducer delegates that action to the correct reducer
+6. The reducer returns a new state given the old state and the action object
+7. That new state becomes the store's state
+8. React is then called by Redux and told to update
+
+## Use redux on your app
+
+### Install redux
+
+Use the following commands:
+`npm install redux`
+`npm install react-redux`
+
+### Store
+
+Create a `store` file and use `createStore` to create a store that will have your states. The `reducer` is a function that takes a `state` and gets back another `state`.
+
+```js
+import { createStore } from "redux";
+import reducer from "./reducers";
+
+const store = createStore(reducer);
+
+export default store;
+```
+
+If you wanna add the `redux` dev tools you need to add it on this file.
+
+```js
+import { createStore } from "redux";
+import reducer from "./reducers";
+
+const store = createStore(
+  reducer,
+  typeof window === "object" &&
+    typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== "undefined"
+    ? window.__REDUX_DEVTOOLS_EXTENSION__()
+    : f => f
+);
+
+export default store;
+```
+
+Here are the `redux` dev tools exist it will use it; if not we just send a function.
+
+### Reducer
+
+Create a directory called `reducer` with an `index.js` that will help us to send all our `reducer` functions.
+
+```js
+import { combineReducers } from "redux";
+import reducerFunction from "./reducerFunction";
+import anotherReducerFunction from "./anotherReducerFunction";
+
+export default combineReducers({
+  reducerFunction,
+  anotherReducerFunction
+});
+```
+
+Create all the reducer functions that you need on it own file following the next structure:
+
+```js
+export default function reducerFunction(state = "Example", action) {
+  if (action.type === "CHANGE_STATE") {
+    return action.payload;
+  } else {
+    return state;
+  }
+}
+```
+
+The `action`: If an object that you will get from wherever redux dispatch the action and only will respond on a particular type. Always return the `state` it always specs that you return some sore of `state`. On this example we use the [flux-standard-action](https://github.com/redux-utilities/flux-standard-action) to define the `action` structure.
+
+## Action creators
+
+The `action creators` are functions that receive some kind of data and return an action. You can follow the next code to build your own.
+
+```js
+export default function changeData(data) {
+  return { type: "CHANGE_DATA", payload: data };
+}
+```
+
+## Add the Provider
+
+On your `app` file import the following:
+`import { Provider } from "react-redux";`
+
+Then wrap the code that you want that `redux` is available
+
+```js
+<Provider store={store}>// your code</Provider>
+```
+
+On the child of the provider you need the following:
+
+- Import `connect` from `redux`
+  `import { connect } from "react-redux";`
+- Your component will receive `props` and all those `states` that `redux` handle will be received on those `props`.
+- Now write the code to inject the data from `redux`:
+
+  - First, the function that pulls things from `redux` and handles to the component
+
+  ```js
+  const mapStateToProps = ({ state1, state2 }) => ({
+    state1,
+    state2
+  });
+  ```
+
+  - Then create a function that updates the data to redux from the component
+
+  ```js
+  import actionCreatorName1 from "./actionCreator/actionCreatorName1";
+  import actionCreatorName2 from "./actionCreator/actionCreatorName2";
+
+  const mapDispatchToProps = dispatch => ({
+    setState1: state1 => dispatch(actionCreatorName1(state1)),
+    updateState2: state2 => dispatch(actionCreatorName2(state2))
+  });
+  ```
+
+  - Finally, connect with `redux`. On the `export` of your component add the `connect` function. `connect` returns a function that you gonna invoke on your component(decorators).
+
+  ```js
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(MyComponent);
+  ```
+
+  ## Notes
+
+  - [redux dev tools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
