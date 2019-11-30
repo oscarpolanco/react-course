@@ -47,7 +47,7 @@ const SearchParams = props => {
             id="location"
             value={props.location}
             placeholder="location"
-            onChange={e => props.updateLocation(e.target.value)}
+            onChange={e => updateLocation(e.target.value)}
           />
         </label>
         <AnimalDropdown />
@@ -56,8 +56,8 @@ const SearchParams = props => {
           Theme
           <select
             value={props.theme}
-            onChange={e => props.setTheme(e.target.value)}
-            onBlur={e => props.setTheme(e.target.value)}
+            onChange={e => setTheme(e.target.value)}
+            onBlur={e => setTheme(e.target.value)}
           >
             <option value="peru">Peru</option>
             <option value="darkblue">Dark Blue</option>
