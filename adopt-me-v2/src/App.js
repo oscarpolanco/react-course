@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { Router, Link } from "@reach/router";
-import ThemeContext from "./ThemeContext";
+import { Provider } from "react-redux";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
 import "regenerator-runtime/runtime";
+import store from "./store";
 
 // your code is going to be here
 const App = () => {
-  const themeKook = useState("peru");
   return (
     <React.StrictMode>
-      <ThemeContext.Provider value={themeKook}>
+      <Provider store={store}>
         <div>
           <header>
             <Link to="/">Adopt Me!</Link>
@@ -20,7 +20,7 @@ const App = () => {
             <Details path="/details/:id" />
           </Router>
         </div>
-      </ThemeContext.Provider>
+      </Provider>
     </React.StrictMode>
   );
 };
